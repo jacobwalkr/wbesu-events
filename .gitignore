@@ -1,0 +1,7 @@
+# NetBeans project files
+nbproject/
+
+# Files containing secret keys like passwords and shit
+secret/
+
+# Well, this turned out to be pretty boring...

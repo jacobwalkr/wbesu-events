@@ -1,7 +1,7 @@
 <?php
 
 // Split the request up
-$split_request = explode('&', $_GET['request']);
+$split_request = explode('?', $_SERVER['REQUEST_URI']);
 
 // Use regex to split the main request up (the first match for explode)
 $uri_pattern = '~^/?(?P<controller>\w*)((/?(?P<action>\w*))?(/?(?P<data>(\w*/?)*)))?$~';
@@ -9,10 +9,9 @@ $matches = array();
 preg_match($uri_pattern, $split_request[0], $matches);
 
 // Split the query string up
-print_r($split_request);
 if (isset($split_request[1]))
 {
-    $query_string_split = array_values($split_request[1]);
+    $query_string_split = explode('&', $split_request[1]);
 }
 else
 {

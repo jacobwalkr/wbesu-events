@@ -41,11 +41,11 @@ else
 }
 
 // Display URL fragments nicely
-echo "<br><strong>Controller:</strong><br>{$matches['controller']}<br><br>\n";
-echo "<strong>Action:</strong><br>{$matches['action']}<br><br>\n";
-echo "<strong>Data:</strong><br>\n";
+echo "Controller:\n{$matches['controller']}\n\n";
+echo "Action:\n{$matches['action']}\n\n";
+echo "Data:\n";
 print_r($request_data);
-echo "<br><br>\n<strong>Query:</strong><br>\n";
+echo "\n\nQuery:\n";
 print_r($query_string_assoc);
 
 ?>

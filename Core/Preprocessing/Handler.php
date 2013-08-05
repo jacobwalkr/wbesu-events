@@ -1,10 +1,13 @@
 <?php
-
 class Handler
 {
+    // This function feels too long
     public static function Handle($raw_request)
     {
-        // Split the request up
+        /*
+         * Split up the request components
+         */
+        // Split the query string from the URL
         $split_request = explode('?', $raw_request);
 
         // Use regex to split the main request up (the first match for explode)
@@ -26,14 +29,14 @@ class Handler
             $nice_query = array();
         }
 
-        // Collect request fragments
-        $nice_request = array(
-            'controller' => $matches['controller'],
-            'action' => $matches['action'],
-            'data' => $nice_data,
-            'query' => $nice_query
-        );
-        
-        Router::Route($nice_request);
+        /*
+         * Create controller and send it on its way
+         * No error checking yet!
+         */
+        $controllerName =  ucfirst(strtolower($matches['controller'])) . "Controller";
+        require "Controllers/" . $controllerName . ".php";
+
+        $controller = new $controllerName($nice_data, $nice_query);
+        $controller->Go($matches['action']);
     }
 }

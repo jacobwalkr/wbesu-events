@@ -1,33 +1,13 @@
 <?php
 
-// Split the request up
-$split_request = explode('?', $_SERVER['REQUEST_URI']);
-
-// Use regex to split the main request up (the first match for explode)
-$uri_pattern = '~^/?(?P<controller>\w*)((/?(?P<action>\w*))?(/?(?P<data>(\w*/?)*)))?$~';
-$matches = array();
-preg_match($uri_pattern, $split_request[0], $matches);
-
-// Split the query string up
-if (isset($split_request[1]))
+foreach (glob('Core/*/') as $folder)
 {
-    $query_string_split = explode('&', $split_request[1]);
-}
-else
-{
-    $query_string_split = array();
+    foreach (glob($folder . '*.php') as $file)
+    {
+        require $file;
+    }
 }
 
-// Split the data bits up (as in /controller/action/data1/data2/data3)
-$raw_request_data = $matches['data'];
-$request_data = explode('/', $raw_request_data);
-
-// Display URL fragments nicely
-echo "<br><strong>Controller:</strong><br>{$matches['controller']}<br><br>\n";
-echo "<strong>Action:</strong><br>{$matches['action']}<br><br>\n";
-echo "<strong>Data:</strong><br>\n";
-print_r($request_data);
-echo "<br><br>\n<strong>Query:</strong><br>\n";
-print_r($query_string_split);
+Handler::Handle($_SERVER['REQUEST_URI']);
 
 ?>

@@ -8,12 +8,6 @@ class System
         self::loadConfig();
     }
 
-    public static function LoadService($service)
-    {
-        require 'Application/Model/' . $service . '.php';
-        return new $service();
-    }
-
     public static function LoadDatabaseConnector()
     {
         $dbConfig = self::$config['database'];

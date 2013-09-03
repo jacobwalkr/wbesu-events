@@ -1,5 +1,5 @@
 <?php
-abstract class Model implements JsonSerializable
+abstract class Model
 {
     protected $repositories;
 

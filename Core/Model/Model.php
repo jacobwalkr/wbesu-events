@@ -11,7 +11,14 @@ abstract class Model
         {
             foreach ($this->usesRepositories as $useRepository)
             {
-                $repositoryName = $useRepository . 'Repository';
+                if ($useRepository == 'Core')
+                {
+                    $repositoryName = 'Repository';
+                }
+                else
+                {
+                    $repositoryName = $useRepository . 'Repository';
+                }
 
                 require 'Application/Repository/' . $repositoryName . '.php';
                 $this->repositories[$useRepository] = new $repositoryName();

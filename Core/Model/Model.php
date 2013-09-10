@@ -14,7 +14,6 @@ abstract class Model
                 if ($useRepository == 'Core')
                 {
                     $repositoryName = 'Repository';
-                    require INDEX_DIR . 'Core/Repository/Repository.php';
                 }
                 else
                 {

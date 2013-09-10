@@ -4,10 +4,8 @@ nbproject/
 # PhpStorm project files
 .idea/
 
-# Files containing secret keys like passwords and shit
-secret/
-
 # Logs and shit
 apache-logs
 
-# Well, this turned out to be pretty boring...
+# Sensitive files
+Application/Config/database.json

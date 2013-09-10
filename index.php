@@ -1,10 +1,12 @@
 <?php
 
+define('INDEX_DIR', dirname(__FILE__));
+
 foreach (glob('Core/*/') as $folder)
 {
     foreach (glob($folder . '*.php') as $file)
     {
-        require $file;
+        require INDEX_DIR . $file;
     }
 }
 

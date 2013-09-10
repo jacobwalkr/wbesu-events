@@ -13,7 +13,7 @@ class Controller
         {
             foreach ($this->usesModels as $useModel)
             {
-                require 'Application/Model/' . $useModel . '.php';
+                require INDEX_DIR . 'Application/Model/' . $useModel . '.php';
             }
         }
     }

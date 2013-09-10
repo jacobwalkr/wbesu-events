@@ -49,7 +49,7 @@ class Handler
          * No error checking yet!
          */
         $controllerName =  ucfirst(strtolower($matches[1])) . "Controller";
-        require "Application/Controller/" . $controllerName . ".php";
+        require INDEX_DIR . "Application/Controller/" . $controllerName . ".php";
 
         $controller = new $controllerName($nice_data, $nice_query);
         $controller->Go($matches[4]);

@@ -14,12 +14,12 @@ abstract class Model
                 if ($useRepository == 'Core')
                 {
                     $repositoryName = 'Repository';
-                    require 'Core/Repository/Repository.php';
+                    require INDEX_DIR . 'Core/Repository/Repository.php';
                 }
                 else
                 {
                     $repositoryName = $useRepository . 'Repository';
-                    require 'Application/Repository/' . $repositoryName . '.php';
+                    require INDEX_DIR . 'Application/Repository/' . $repositoryName . '.php';
                 }
 
                 $this->repositories[$useRepository] = new $repositoryName();

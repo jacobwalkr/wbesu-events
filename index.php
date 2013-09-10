@@ -1,6 +1,6 @@
 <?php
 
-define('INDEX_DIR', dirname(__FILE__));
+define('INDEX_DIR', dirname(__FILE__) . '/');
 
 foreach (glob('Core/*/') as $folder)
 {

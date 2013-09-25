@@ -11,12 +11,12 @@ class Handler
         $split_request = explode('?', $raw_request);
 
         // Use regex to split the main request up (the first match for explode)
-        $uri_pattern = '~^/?(\w*)((/?(\w*))?(/?((\w*\/?)*)))?$~';
+        $uri_pattern = '~^/?(\w*)(/?((\w*\/?)*))?$~';
         $matches = array();
         preg_match($uri_pattern, $split_request[0], $matches);
 
         // Split the data bits up (as in /controller/action/data1/data2/data3)
-        $raw_request_data = $matches[6];
+        $raw_request_data = $matches[3];
         $nice_data = explode('/', $raw_request_data);
 
         // Split the query string up
@@ -52,6 +52,6 @@ class Handler
         require INDEX_DIR . "Application/Controller/" . $controllerName . ".php";
 
         $controller = new $controllerName($nice_data, $nice_query);
-        $controller->Go($matches[4]);
+        $controller->Go($_SERVER['REQUEST_METHOD']);
     }
 }

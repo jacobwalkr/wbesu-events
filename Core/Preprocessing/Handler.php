@@ -51,7 +51,15 @@ class Handler
         $controllerName =  ucfirst(strtolower($matches[1])) . "Controller";
         require INDEX_DIR . "Application/Controller/" . $controllerName . ".php";
 
-        $controller = new $controllerName($nice_data, $nice_query);
-        $controller->Go($_SERVER['REQUEST_METHOD']);
+        try
+        {
+            $controller = new $controllerName($nice_data, $nice_query);
+            $controller->Go($_SERVER['REQUEST_METHOD']);
+        }
+        catch (Exception $exception)
+        {
+            $handler = new ErrorHandler($exception);
+            $handler->Display();
+        }
     }
 }

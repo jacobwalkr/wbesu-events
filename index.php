@@ -7,13 +7,14 @@ define('INDEX_DIR', dirname(__FILE__) . '/');
  */
 
 // Include everything from core because why dafuq not
-foreach (glob("*/") as $folder)
+foreach (glob("Application/*/") as $folder)
 {
     foreach (glob($folder . "*.php") as $filename)
     {
         // The downside of this being that everything must be exactly one
         // folder deep :(. Eh, I'll figure it out later.
-        require $folder . $filename;
+        echo $filename . "<br>\n";
+        require $filename;
     }
 }
 

@@ -45,11 +45,18 @@ class Handler
         }
 
         /*
-         * Create controller and send it on its way
+         * Create controller and send it on its way (HomeController if not specified)
          * No error checking yet!
          */
-        $controllerName =  ucfirst(strtolower($matches[1])) . "Controller";
-        require INDEX_DIR . "Application/Controller/" . $controllerName . ".php";
+        $controllerType = ucfirst(strtolower($matches[1]));
+
+        if (strlen($controllerType) === 0)
+        {
+            $controllerType = 'Home';
+        }
+
+        $controllerName =  $controllerType . 'Controller';
+        require INDEX_DIR . 'Application/Controller/' . $controllerName . '.php';
 
         try
         {

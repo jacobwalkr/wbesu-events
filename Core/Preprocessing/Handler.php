@@ -61,7 +61,7 @@ class Handler
         try
         {
             $controller = new $controllerName($nice_data, $nice_query);
-            $controller->Go($_SERVER['REQUEST_METHOD']);
+            $controller->Go(strtolower($_SERVER['REQUEST_METHOD']));
         }
         catch (Exception $exception)
         {

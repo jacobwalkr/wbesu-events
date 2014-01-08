@@ -13,7 +13,6 @@ foreach (glob("Application/*/") as $folder)
     {
         // The downside of this being that everything must be exactly one
         // folder deep :(. Eh, I'll figure it out later.
-        echo $filename . "<br>\n";
         require $filename;
     }
 }

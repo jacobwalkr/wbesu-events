@@ -7,7 +7,7 @@ define('INDEX_DIR', dirname(__FILE__) . '/');
  */
 
 // Include everything from core because why dafuq not
-foreach (glob("Application/*/") as $folder)
+foreach (glob("Core/*/") as $folder)
 {
     foreach (glob($folder . "*.php") as $filename)
     {
